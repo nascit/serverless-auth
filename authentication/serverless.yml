@@ -31,24 +31,24 @@ package:
 # Functions
 
 functions:
-  signup:
-    handler: handler.signup
-    memorySize: 256
-    timeout: 15
-    events:
-      - http:
-          path: authentication/signup
-          method: post
-          integration: lambda-proxy
-  signin:
-    handler: handler.signin
-    memorySize: 256
-    timeout: 15
-    events:
-      - http:
-          path: authentication/signin
-          method: get
-          integration: lambda-proxy
+#  signup:
+#    handler: handler.signup
+#    memorySize: 256
+#    timeout: 15
+#    events:
+#      - http:
+#          path: authentication/signup
+#          method: post
+#          integration: lambda-proxy
+#  signin:
+#    handler: handler.signin
+#    memorySize: 256
+#    timeout: 15
+#    events:
+#      - http:
+#          path: authentication/signin
+#          method: get
+#          integration: lambda-proxy
   hello:
     handler: handler.hello
     events:
@@ -56,11 +56,11 @@ functions:
           path: hello
           method: get
           integration: lambda
-          authorizer:
-            name: authorizer
-            arn: arn:aws:cognito-idp:us-east-1:962321922028:userpool/us-east-1_OjyyFWVMY
-            claims:
-              - email
+#          authorizer:
+#            name: authorizer
+#            arn: arn:aws:cognito-idp:us-east-1:962321922028:userpool/us-east-1_OjyyFWVMY
+#            claims:
+#              - email
 #  callback:
 #    handler: handler.callback
 #    memorySize: 256
@@ -70,26 +70,26 @@ functions:
 #          path: authentication/callback/{provider}
 #          method: get
 #          integration: lambda-proxy
-  refresh:
-    handler: handler.refresh
-    memorySize: 256
-    timeout: 15
-    events:
-      - http:
-          path: authentication/refresh/{refresh_token}
-          method: get
-          cors: true
-          integration: lambda
-          request:
-            template:
-              application/json: |
-                {
-                  "refresh_token":"$input.params('refresh_token')",
-                  "id":"$input.params('id')",
-                  "state":"$input.params('state')",
-                  "host":"$input.params().header.get('host')",
-                  "stage":"$context.stage"
-                }
+#  refresh:
+#    handler: handler.refresh
+#    memorySize: 256
+#    timeout: 15
+#    events:
+#      - http:
+#          path: authentication/refresh/{refresh_token}
+#          method: get
+#          cors: true
+#          integration: lambda
+#          request:
+#            template:
+#              application/json: |
+#                {
+#                  "refresh_token":"$input.params('refresh_token')",
+#                  "id":"$input.params('id')",
+#                  "state":"$input.params('state')",
+#                  "host":"$input.params().header.get('host')",
+#                  "stage":"$context.stage"
+#                }
 #  authorize:
 #    handler: handler.authorize
 
