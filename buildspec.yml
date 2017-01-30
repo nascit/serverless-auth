@@ -3,8 +3,15 @@ phases:
     install:
       commands:
         - npm install -g serverless
-        - cd "authentication"
+    pre_build:
+      commands:
+        - cd 'authentication'
+        - cd authentication
+        - cd authentication/
+        
         - ls
-        - echo Whatsup
+
+    build:
+      commands:
         - npm install
-        - serverless help 
+        - serverless deploy
